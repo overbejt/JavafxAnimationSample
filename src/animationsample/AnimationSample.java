@@ -1,6 +1,8 @@
 
 package animationsample;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 public class AnimationSample extends Application {
@@ -21,7 +24,17 @@ public class AnimationSample extends Application {
         Circle cir = new Circle();
         cir.setFill(Color.CADETBLUE);
         cir.setRadius(30);
-        cir.relocate(15,15);
+        cir.setLayoutX(50);
+        cir.setLayoutY(50);
+        
+        TranslateTransition transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(3));
+        transition.setToX(500);
+        transition.setToY(500);
+        transition.setAutoReverse(true);
+        transition.setCycleCount(Animation.INDEFINITE);
+        transition.setNode(cir);
+        transition.play();
         
         Pane root = new Pane();
         root.getChildren().add(cir);
